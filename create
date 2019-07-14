@@ -2,7 +2,7 @@
 
 repo_name=$1
 
-#enable activate
-source /home/awesome/Personal/AutoGitRepo/env/bin/activate
+#activate envi
+source <your_path_location>/AutoGitRepo/env/bin/activate
 
-python /home/awesome/Personal/AutoGitRepo/main.py "${repo_name}"
+python <your_path_location>/AutoGitRepo/main.py "${repo_name}"
