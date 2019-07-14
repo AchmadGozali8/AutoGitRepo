@@ -1,0 +1,8 @@
+#!/bin/bash
+
+repo_name=$1
+
+#enable activate
+source /home/awesome/Personal/AutoGitRepo/env/bin/activate
+
+python /home/awesome/Personal/AutoGitRepo/main.py "${repo_name}"
