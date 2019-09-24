@@ -1,14 +1,29 @@
 import sys
 import requests
 import os
+import getopt
+import argparse
 
 TOKEN = os.environ.get("GIT_TOKEN", None)
+# TO-DO
+# [ ] Add lists gitignore template
 
-def repo_name():
-	try:
-		return sys.argv[1]
-	except IndexError:
-		return False
+def argument_option():
+	data = {}
+
+	parser = argparse.ArgumentParser(description="Automate to create repository on github by @achmad.gz", usage='%(prog)s -n <Repository Name> [-g <Gitignore Template ex: Python>] [-p <Set Repository as Private>]')
+	parser.add_argument("-n", "--name", required=True,metavar='', help="Repository name")
+	parser.add_argument("-p", "--private", default=False,  action='store_true',help="Set repository as private")
+	parser.add_argument("-g", "--gitignore",metavar='', help="Add gitignore template")
+	args = parser.parse_args()
+
+	if args.gitignore:
+		data['gitignore_template'] = args.gitignore
+
+	data['private'] = args.private
+	data['name'] = args.name
+
+	return data
 
 def main_endpoint():
 	endpoint = "https://api.github.com"	
@@ -19,25 +34,16 @@ def create_repo():
 	headers = {"content-type": "application/json", "Authorization": "token {TOKEN}".format(TOKEN=TOKEN)}
 	req_url = "{main}{endpoint}".format(main=main_endpoint(), endpoint=endpoint)
 
-	repository_name = repo_name()
+	parameters = argument_option()
 
-	if not repository_name:
-		err = {"Error": "Repository name not define"}
-		print err
-		return err
-
-	data = {"name": repository_name}
-	
-	response = requests.post(req_url, json=data, headers=headers)
+	response = requests.post(req_url, json=parameters, headers=headers)
 
 	if not response.ok:
 		error = {"error": response.text}
 		print error
-		print response.url
-		print response.headers
 		return error
 
-	print "{name} has been created".format(name=repository_name)
+	print "{name} has been created".format(name=parameters["name"])
 	return response.json()
 
 def clone_repo(url):
@@ -57,4 +63,5 @@ def main():
 	
 	clone_repo(ssh_url)
 
-main()
+if __name__ == "__main__":
+	main()

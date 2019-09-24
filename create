@@ -5,4 +5,4 @@ repo_name=$1
 #activate envi
 source <your_path_location>/AutoGitRepo/env/bin/activate
 
-python <your_path_location>/AutoGitRepo/main.py "${repo_name}"
+python <your_path_location>/AutoGitRepo/main.py
