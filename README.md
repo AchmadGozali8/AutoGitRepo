@@ -8,6 +8,8 @@
 - Clone Repository ke Cureent Directory
 
 # Important Notes
+- Pastikan anda memiliki token github jika belum, anda dapat mengenerate pada halaman berikut https://github.com/settings/tokens
+- Masukkan token yang telah digenerate pada file main.py di variable TOKEN
 - Repository akan diclone menggunakan ssh_url, pastikan anda konek ke github dengan ssh
 - Repository akan diclone pada current directory ketika perintah di eksekusi, misal: Anda sedang berada pada `/home/user/mydir/` repo akan di clone pada `/home/user/mydir/repo_name`
 - File `create` adalah script bash yang digunakan untuk melakukan eksekusi perintah python (Linux), pastikan anda melakukan update pada pathnya
