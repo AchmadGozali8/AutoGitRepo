@@ -1,8 +1,7 @@
 #!/bin/bash
 
-repo_name=$1
+source <path_location>/AutoGitRepo/env/bin/activate
+source <path_location>/AutoGitRepo/export.sh 
 
-#activate envi
-source <your_path_location>/AutoGitRepo/env/bin/activate
-
-python <your_path_location>/AutoGitRepo/main.py
+# $@ is built-in function to get all argument passed
+python <path_location>/AutoGitRepo/main.py "$@"
