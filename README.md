@@ -21,6 +21,10 @@
 - Setup virtualenv dengan perintah `virtualenv env`
 - Install library yang dibutuhkan `pip install -r requirements.txt`
 - Pindahkan file create ke folder executable mis: `sudo mv create /usr/local/bin`
-- Ganti permission file create, `sudo chown root:root /usr/local/bin/create && sudo chmod +x /usr/local/bin/create`
-- Eksekusi perintah dengan `create <nama_repository>`
+- Eksekusi perintah dengan `create -h` untuk menampilkan semua options.
+- Contoh penggunaan: `create -n instagram_clone -p -g Dart` ( jika dibahasa manuasiakan: buat repo instagram_clone atur sebagai private dan tambahkan template .gitignore Dart setelah itu clone pada current directory )
+  - `-n` => Name
+  - `-p` => Private
+  - `-g` => .gitignore template
+  
 - Done
